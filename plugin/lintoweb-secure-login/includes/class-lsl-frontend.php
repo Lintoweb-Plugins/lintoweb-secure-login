@@ -26,6 +26,7 @@ class LSL_Frontend {
 		add_filter( 'login_headerurl', array( $this, 'login_header_url' ) );
 		add_filter( 'login_headertext', array( $this, 'login_header_text' ) );
 		add_action( 'login_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'login_footer', array( $this, 'render_orb_background' ), 5 );
 	}
 
 	/**
@@ -88,11 +89,39 @@ class LSL_Frontend {
 			);
 		}
 
+		$js = LSL_DIR . 'frontend/js/login-motion.js';
+		if ( file_exists( $js ) ) {
+			wp_enqueue_script(
+				'lsl-login-motion',
+				LSL_URL . 'frontend/js/login-motion.js',
+				array(),
+				LSL_VERSION,
+				true
+			);
+		}
+
 		$logo = $this->get_logo_url();
 		if ( $logo ) {
 			$inline = ':root{--lsl-login-logo:url("' . esc_url_raw( $logo ) . '");}';
 			wp_add_inline_style( 'lsl-login', $inline );
 		}
+	}
+
+	/**
+	 * Render the lightweight ambient orb layer behind the login form.
+	 *
+	 * @return void
+	 */
+	public function render_orb_background() {
+		?>
+		<div class="lsl-login-orbs" aria-hidden="true">
+			<span class="lsl-orb lsl-orb-1"></span>
+			<span class="lsl-orb lsl-orb-2"></span>
+			<span class="lsl-orb lsl-orb-3"></span>
+			<span class="lsl-orb lsl-orb-4"></span>
+			<span class="lsl-orb lsl-orb-5"></span>
+		</div>
+		<?php
 	}
 
 	/**

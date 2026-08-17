@@ -50,237 +50,132 @@ body.lsl-login {
 	overflow: hidden;
 }
 
+/*
+ * Lintoweb ambient orb background.
+ * Motion is handled by the Login-only JS controller so each orb can softly
+ * steer away from the viewport edges while keeping its full visual bounds visible.
+ */
 body.lsl-login::before,
 body.lsl-login::after,
 body.lsl-login #login::before,
 body.lsl-login #login::after {
-	content: "";
+	content: none;
+}
+
+body.lsl-login .lsl-login-orbs {
 	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	overflow: hidden;
+	contain: layout paint size;
+}
+
+body.lsl-login .lsl-orb {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 24rem;
+	height: 24rem;
 	border-radius: 50%;
 	pointer-events: none;
-	z-index: 0;
 	will-change: transform, opacity;
-	mix-blend-mode: screen;
 	transform-origin: 50% 50%;
+	mix-blend-mode: screen;
+	backface-visibility: hidden;
 }
 
-/*
- * Lintoweb ambient-orb system.
- * The four pseudo-elements stay within the existing architecture, while
- * each follows a separate, long-form organic path with its own phase and
- * depth profile. Only transform/opacity are animated for compositor-friendly motion.
- */
-body.lsl-login::before {
-	width: 30rem;
-	height: 30rem;
-	left: -10rem;
-	top: -9rem;
+body.lsl-login .lsl-orb::after {
+	content: "";
+	position: absolute;
+	inset: -7%;
+	border-radius: inherit;
+	background: radial-gradient(circle, rgba(250,251,254,.035), transparent 66%);
+	filter: blur(18px);
+	pointer-events: none;
+}
+
+body.lsl-login .lsl-orb-1 {
+	width: 31rem;
+	height: 31rem;
 	background:
-		radial-gradient(circle at 42% 38%, rgba(72, 208, 236, .34) 0 5%, rgba(72, 208, 236, .20) 18%, rgba(72, 208, 236, .08) 43%, rgba(72, 208, 236, .025) 57%, transparent 76%),
-		radial-gradient(circle at 68% 64%, rgba(250, 251, 254, .035), transparent 30%);
+		radial-gradient(circle at 42% 37%, rgba(72,208,236,.31) 0 4%, rgba(72,208,236,.19) 18%, rgba(72,208,236,.075) 42%, rgba(72,208,236,.025) 59%, transparent 78%);
+	filter: blur(25px);
+}
+
+body.lsl-login .lsl-orb-2 {
+	width: 27rem;
+	height: 27rem;
+	background:
+		radial-gradient(circle at 45% 41%, rgba(23,95,214,.28) 0 5%, rgba(23,95,214,.17) 20%, rgba(23,95,214,.065) 44%, rgba(23,95,214,.022) 60%, transparent 80%);
+	filter: blur(23px);
+}
+
+body.lsl-login .lsl-orb-3 {
+	width: 21rem;
+	height: 21rem;
+	background:
+		radial-gradient(circle at 48% 43%, rgba(253,124,131,.24) 0 5%, rgba(253,124,131,.14) 19%, rgba(253,124,131,.055) 44%, rgba(253,124,131,.018) 60%, transparent 80%);
 	filter: blur(22px);
-	opacity: .76;
-	animation: lsl-orb-turquoise 38s cubic-bezier(.37,.02,.20,.99) -7s infinite alternate;
 }
 
-body.lsl-login::after {
-	width: 32rem;
-	height: 32rem;
-	right: -11rem;
-	bottom: -11rem;
+body.lsl-login .lsl-orb-4 {
+	width: 17rem;
+	height: 17rem;
 	background:
-		radial-gradient(circle at 47% 42%, rgba(253, 124, 131, .27) 0 5%, rgba(253, 124, 131, .16) 18%, rgba(253, 124, 131, .07) 42%, rgba(253, 124, 131, .025) 58%, transparent 78%),
-		radial-gradient(circle at 32% 66%, rgba(236, 152, 40, .045), transparent 34%);
+		radial-gradient(circle at 48% 44%, rgba(236,152,40,.20) 0 5%, rgba(236,152,40,.11) 20%, rgba(236,152,40,.045) 45%, rgba(236,152,40,.014) 62%, transparent 82%);
+	filter: blur(19px);
+}
+
+body.lsl-login .lsl-orb-5 {
+	width: 19rem;
+	height: 19rem;
+	background:
+		radial-gradient(circle at 44% 42%, rgba(72,208,236,.12) 0 5%, rgba(23,95,214,.085) 22%, rgba(72,208,236,.04) 45%, rgba(72,208,236,.012) 62%, transparent 82%);
 	filter: blur(27px);
-	opacity: .68;
-	animation: lsl-orb-pink 46s cubic-bezier(.42,.04,.18,.98) -19s infinite alternate;
-}
-
-body.lsl-login #login::before {
-	width: 30rem;
-	height: 30rem;
-	right: -10rem;
-	top: 4%;
-	background:
-		radial-gradient(circle at 44% 40%, rgba(23, 95, 214, .30) 0 5%, rgba(23, 95, 214, .18) 18%, rgba(23, 95, 214, .07) 42%, rgba(23, 95, 214, .025) 58%, transparent 78%),
-		radial-gradient(circle at 66% 26%, rgba(72, 208, 236, .045), transparent 32%);
-	filter: blur(24px);
-	opacity: .66;
-	animation: lsl-orb-blue 51s cubic-bezier(.31,.07,.16,.99) -31s infinite alternate;
-}
-
-body.lsl-login #login::after {
-	width: 26rem;
-	height: 26rem;
-	left: -10rem;
-	bottom: -2rem;
-	background:
-		radial-gradient(circle at 48% 44%, rgba(236, 152, 40, .26) 0 5%, rgba(236, 152, 40, .15) 17%, rgba(236, 152, 40, .06) 41%, rgba(236, 152, 40, .022) 58%, transparent 78%),
-		radial-gradient(circle at 35% 64%, rgba(253, 124, 131, .035), transparent 34%);
-	filter: blur(21px);
-	opacity: .60;
-	animation: lsl-orb-gold 57s cubic-bezier(.44,.03,.22,.97) -11s infinite alternate;
-}
-
-@keyframes lsl-orb-turquoise {
-	0% {
-		transform: translate3d(-4rem, 2rem, 0) scale(.90) rotate(-10deg);
-		opacity: .60;
-	}
-	15% {
-		transform: translate3d(8rem, -5rem, 0) scale(.98) rotate(-3deg);
-		opacity: .70;
-	}
-	31% {
-		transform: translate3d(23rem, 4rem, 0) scale(1.08) rotate(7deg);
-		opacity: .78;
-	}
-	48% {
-		transform: translate3d(39rem, 18rem, 0) scale(.97) rotate(14deg);
-		opacity: .67;
-	}
-	66% {
-		transform: translate3d(29rem, 35rem, 0) scale(1.12) rotate(8deg);
-		opacity: .74;
-	}
-	83% {
-		transform: translate3d(8rem, 42rem, 0) scale(1.01) rotate(-2deg);
-		opacity: .64;
-	}
-	100% {
-		transform: translate3d(-6rem, 30rem, 0) scale(.95) rotate(-12deg);
-		opacity: .58;
-	}
-}
-
-@keyframes lsl-orb-pink {
-	0% {
-		transform: translate3d(3rem, -5rem, 0) scale(1.00) rotate(8deg);
-		opacity: .54;
-	}
-	17% {
-		transform: translate3d(-10rem, -21rem, 0) scale(.94) rotate(2deg);
-		opacity: .62;
-	}
-	34% {
-		transform: translate3d(-27rem, -9rem, 0) scale(1.06) rotate(-9deg);
-		opacity: .70;
-	}
-	52% {
-		transform: translate3d(-44rem, 8rem, 0) scale(.97) rotate(-16deg);
-		opacity: .59;
-	}
-	69% {
-		transform: translate3d(-36rem, 27rem, 0) scale(1.10) rotate(-7deg);
-		opacity: .68;
-	}
-	85% {
-		transform: translate3d(-17rem, 42rem, 0) scale(1.02) rotate(4deg);
-		opacity: .60;
-	}
-	100% {
-		transform: translate3d(2rem, 30rem, 0) scale(.96) rotate(12deg);
-		opacity: .52;
-	}
-}
-
-@keyframes lsl-orb-blue {
-	0% {
-		transform: translate3d(0, 1rem, 0) scale(.95) rotate(-4deg);
-		opacity: .54;
-	}
-	16% {
-		transform: translate3d(-15rem, 8rem, 0) scale(1.05) rotate(4deg);
-		opacity: .64;
-	}
-	33% {
-		transform: translate3d(-25rem, 24rem, 0) scale(.93) rotate(11deg);
-		opacity: .56;
-	}
-	49% {
-		transform: translate3d(-12rem, 40rem, 0) scale(1.10) rotate(18deg);
-		opacity: .67;
-	}
-	66% {
-		transform: translate3d(12rem, 49rem, 0) scale(1.01) rotate(9deg);
-		opacity: .58;
-	}
-	83% {
-		transform: translate3d(32rem, 31rem, 0) scale(1.08) rotate(-2deg);
-		opacity: .64;
-	}
-	100% {
-		transform: translate3d(39rem, 8rem, 0) scale(.97) rotate(-12deg);
-		opacity: .52;
-	}
-}
-
-@keyframes lsl-orb-gold {
-	0% {
-		transform: translate3d(-1rem, 3rem, 0) scale(.98) rotate(6deg);
-		opacity: .48;
-	}
-	18% {
-		transform: translate3d(13rem, -15rem, 0) scale(1.06) rotate(-2deg);
-		opacity: .56;
-	}
-	36% {
-		transform: translate3d(31rem, -24rem, 0) scale(.95) rotate(-10deg);
-		opacity: .50;
-	}
-	54% {
-		transform: translate3d(49rem, -8rem, 0) scale(1.10) rotate(-18deg);
-		opacity: .61;
-	}
-	72% {
-		transform: translate3d(40rem, 17rem, 0) scale(1.00) rotate(-7deg);
-		opacity: .53;
-	}
-	88% {
-		transform: translate3d(17rem, 36rem, 0) scale(1.07) rotate(5deg);
-		opacity: .58;
-	}
-	100% {
-		transform: translate3d(-7rem, 24rem, 0) scale(.96) rotate(14deg);
-		opacity: .46;
-	}
+	mix-blend-mode: screen;
 }
 
 @media (max-width: 780px) {
-	body.lsl-login::before,
-	body.lsl-login::after,
-	body.lsl-login #login::before,
-	body.lsl-login #login::after {
+	body.lsl-login .lsl-orb-1 {
+		width: 23rem;
+		height: 23rem;
+		filter: blur(20px);
+	}
+
+	body.lsl-login .lsl-orb-2 {
+		width: 21rem;
+		height: 21rem;
+		filter: blur(19px);
+	}
+
+	body.lsl-login .lsl-orb-3 {
+		width: 16rem;
+		height: 16rem;
 		filter: blur(18px);
 	}
 
-	body.lsl-login::before {
-		width: 23rem;
-		height: 23rem;
+	body.lsl-login .lsl-orb-4 {
+		width: 13rem;
+		height: 13rem;
+		filter: blur(16px);
 	}
 
-	body.lsl-login::after {
-		width: 24rem;
-		height: 24rem;
-	}
-
-	body.lsl-login #login::before {
-		width: 23rem;
-		height: 23rem;
-	}
-
-	body.lsl-login #login::after {
-		width: 20rem;
-		height: 20rem;
+	body.lsl-login .lsl-orb-5 {
+		width: 15rem;
+		height: 15rem;
+		filter: blur(21px);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	body.lsl-login::before,
-	body.lsl-login::after,
-	body.lsl-login #login::before,
-	body.lsl-login #login::after {
-		animation: none;
+	body.lsl-login .lsl-login-orbs {
+		contain: strict;
+	}
+
+	body.lsl-login .lsl-orb {
+		will-change: auto;
 	}
 }
 
