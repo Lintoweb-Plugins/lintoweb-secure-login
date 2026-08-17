@@ -3,7 +3,7 @@
  * Plugin Name:       Lintoweb Secure Login
  * Plugin URI:        https://lintoweb.com/
  * Description:       Customizes the WordPress login URL without modifying WordPress core files.
- * Version:           1.0.7
+ * Version:           1.0.8
  * Author:            Lintoweb
  * Author URI:        https://lintoweb.com/
  * Text Domain:       lintoweb-secure-login
@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Plugin constants.
  */
-define( 'LSL_VERSION', '1.0.7' );
+define( 'LSL_VERSION', '1.0.8' );
 define( 'LSL_FILE', __FILE__ );
 define( 'LSL_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LSL_URL', plugin_dir_url( __FILE__ ) );
@@ -40,12 +40,21 @@ $lsl_update_checker->getVcsApi()->enableReleaseAssets(
 
 /**
  * Load core classes.
+ *
+ * Keep the dependency order explicit: LSL_Plugin instantiates the module
+ * classes during init(), so every module class must be loaded first.
  */
-require_once LSL_DIR . 'includes/class-lsl-plugin.php';
-require_once LSL_DIR . 'includes/class-lsl-login-url.php';
 require_once LSL_DIR . 'includes/class-lsl-settings.php';
+require_once LSL_DIR . 'includes/class-lsl-login-url.php';
 require_once LSL_DIR . 'includes/class-lsl-compatibility.php';
+require_once LSL_DIR . 'includes/class-lsl-frontend.php';
 require_once LSL_DIR . 'admin/class-lsl-admin.php';
+require_once LSL_DIR . 'includes/class-lsl-plugin.php';
+
+/**
+ * Register activation handling.
+ */
+register_activation_hook( LSL_FILE, array( 'LSL_Plugin', 'activate' ) );
 
 /**
  * Initialize the plugin.
