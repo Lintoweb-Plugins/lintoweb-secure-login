@@ -1,0 +1,526 @@
+/* Bundled local Vazirmatn font faces. */
+@font-face {
+	font-family: "Vazirmatn";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("../../assets/fonts/Vazirmatn-Regular.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Vazirmatn";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("../../assets/fonts/Vazirmatn-Medium.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Vazirmatn";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("../../assets/fonts/Vazirmatn-Bold.woff2") format("woff2");
+}
+
+html.login {
+	background: #071528;
+}
+
+html.login body {
+	font-family: "Vazirmatn", Tahoma, "Segoe UI", Arial, sans-serif;
+}
+
+body.lsl-login {
+	--lsl-navy: #0A1C36;
+	--lsl-white: #FAFBFE;
+	--lsl-graphite: #323336;
+	--lsl-turquoise: #48D0EC;
+	--lsl-blue: #175FD6;
+	--lsl-pink: #FD7C83;
+	--lsl-gold: #EC9828;
+	min-height: 100vh;
+	margin: 0;
+	background:
+		radial-gradient(900px 700px at 14% 22%, rgba(72, 208, 236, .075), transparent 62%),
+		radial-gradient(760px 620px at 86% 78%, rgba(23, 95, 214, .08), transparent 64%),
+		linear-gradient(180deg, #102744 0%, #0D223C 52%, #0F2946 100%);
+	color: var(--lsl-white);
+	direction: rtl;
+	font-family: "Vazirmatn", Tahoma, "Segoe UI", Arial, sans-serif;
+	position: relative;
+	overflow: hidden;
+}
+
+body.lsl-login::before,
+body.lsl-login::after,
+body.lsl-login #login::before,
+body.lsl-login #login::after {
+	content: "";
+	position: fixed;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 0;
+	will-change: transform, opacity;
+	mix-blend-mode: screen;
+	transform-origin: 50% 50%;
+}
+
+/*
+ * Lintoweb ambient-orb system.
+ * The four pseudo-elements stay within the existing architecture, while
+ * each follows a separate, long-form organic path with its own phase and
+ * depth profile. Only transform/opacity are animated for compositor-friendly motion.
+ */
+body.lsl-login::before {
+	width: 30rem;
+	height: 30rem;
+	left: -10rem;
+	top: -9rem;
+	background:
+		radial-gradient(circle at 42% 38%, rgba(72, 208, 236, .34) 0 5%, rgba(72, 208, 236, .20) 18%, rgba(72, 208, 236, .08) 43%, rgba(72, 208, 236, .025) 57%, transparent 76%),
+		radial-gradient(circle at 68% 64%, rgba(250, 251, 254, .035), transparent 30%);
+	filter: blur(22px);
+	opacity: .76;
+	animation: lsl-orb-turquoise 38s cubic-bezier(.37,.02,.20,.99) -7s infinite alternate;
+}
+
+body.lsl-login::after {
+	width: 32rem;
+	height: 32rem;
+	right: -11rem;
+	bottom: -11rem;
+	background:
+		radial-gradient(circle at 47% 42%, rgba(253, 124, 131, .27) 0 5%, rgba(253, 124, 131, .16) 18%, rgba(253, 124, 131, .07) 42%, rgba(253, 124, 131, .025) 58%, transparent 78%),
+		radial-gradient(circle at 32% 66%, rgba(236, 152, 40, .045), transparent 34%);
+	filter: blur(27px);
+	opacity: .68;
+	animation: lsl-orb-pink 46s cubic-bezier(.42,.04,.18,.98) -19s infinite alternate;
+}
+
+body.lsl-login #login::before {
+	width: 30rem;
+	height: 30rem;
+	right: -10rem;
+	top: 4%;
+	background:
+		radial-gradient(circle at 44% 40%, rgba(23, 95, 214, .30) 0 5%, rgba(23, 95, 214, .18) 18%, rgba(23, 95, 214, .07) 42%, rgba(23, 95, 214, .025) 58%, transparent 78%),
+		radial-gradient(circle at 66% 26%, rgba(72, 208, 236, .045), transparent 32%);
+	filter: blur(24px);
+	opacity: .66;
+	animation: lsl-orb-blue 51s cubic-bezier(.31,.07,.16,.99) -31s infinite alternate;
+}
+
+body.lsl-login #login::after {
+	width: 26rem;
+	height: 26rem;
+	left: -10rem;
+	bottom: -2rem;
+	background:
+		radial-gradient(circle at 48% 44%, rgba(236, 152, 40, .26) 0 5%, rgba(236, 152, 40, .15) 17%, rgba(236, 152, 40, .06) 41%, rgba(236, 152, 40, .022) 58%, transparent 78%),
+		radial-gradient(circle at 35% 64%, rgba(253, 124, 131, .035), transparent 34%);
+	filter: blur(21px);
+	opacity: .60;
+	animation: lsl-orb-gold 57s cubic-bezier(.44,.03,.22,.97) -11s infinite alternate;
+}
+
+@keyframes lsl-orb-turquoise {
+	0% {
+		transform: translate3d(-4rem, 2rem, 0) scale(.90) rotate(-10deg);
+		opacity: .60;
+	}
+	15% {
+		transform: translate3d(8rem, -5rem, 0) scale(.98) rotate(-3deg);
+		opacity: .70;
+	}
+	31% {
+		transform: translate3d(23rem, 4rem, 0) scale(1.08) rotate(7deg);
+		opacity: .78;
+	}
+	48% {
+		transform: translate3d(39rem, 18rem, 0) scale(.97) rotate(14deg);
+		opacity: .67;
+	}
+	66% {
+		transform: translate3d(29rem, 35rem, 0) scale(1.12) rotate(8deg);
+		opacity: .74;
+	}
+	83% {
+		transform: translate3d(8rem, 42rem, 0) scale(1.01) rotate(-2deg);
+		opacity: .64;
+	}
+	100% {
+		transform: translate3d(-6rem, 30rem, 0) scale(.95) rotate(-12deg);
+		opacity: .58;
+	}
+}
+
+@keyframes lsl-orb-pink {
+	0% {
+		transform: translate3d(3rem, -5rem, 0) scale(1.00) rotate(8deg);
+		opacity: .54;
+	}
+	17% {
+		transform: translate3d(-10rem, -21rem, 0) scale(.94) rotate(2deg);
+		opacity: .62;
+	}
+	34% {
+		transform: translate3d(-27rem, -9rem, 0) scale(1.06) rotate(-9deg);
+		opacity: .70;
+	}
+	52% {
+		transform: translate3d(-44rem, 8rem, 0) scale(.97) rotate(-16deg);
+		opacity: .59;
+	}
+	69% {
+		transform: translate3d(-36rem, 27rem, 0) scale(1.10) rotate(-7deg);
+		opacity: .68;
+	}
+	85% {
+		transform: translate3d(-17rem, 42rem, 0) scale(1.02) rotate(4deg);
+		opacity: .60;
+	}
+	100% {
+		transform: translate3d(2rem, 30rem, 0) scale(.96) rotate(12deg);
+		opacity: .52;
+	}
+}
+
+@keyframes lsl-orb-blue {
+	0% {
+		transform: translate3d(0, 1rem, 0) scale(.95) rotate(-4deg);
+		opacity: .54;
+	}
+	16% {
+		transform: translate3d(-15rem, 8rem, 0) scale(1.05) rotate(4deg);
+		opacity: .64;
+	}
+	33% {
+		transform: translate3d(-25rem, 24rem, 0) scale(.93) rotate(11deg);
+		opacity: .56;
+	}
+	49% {
+		transform: translate3d(-12rem, 40rem, 0) scale(1.10) rotate(18deg);
+		opacity: .67;
+	}
+	66% {
+		transform: translate3d(12rem, 49rem, 0) scale(1.01) rotate(9deg);
+		opacity: .58;
+	}
+	83% {
+		transform: translate3d(32rem, 31rem, 0) scale(1.08) rotate(-2deg);
+		opacity: .64;
+	}
+	100% {
+		transform: translate3d(39rem, 8rem, 0) scale(.97) rotate(-12deg);
+		opacity: .52;
+	}
+}
+
+@keyframes lsl-orb-gold {
+	0% {
+		transform: translate3d(-1rem, 3rem, 0) scale(.98) rotate(6deg);
+		opacity: .48;
+	}
+	18% {
+		transform: translate3d(13rem, -15rem, 0) scale(1.06) rotate(-2deg);
+		opacity: .56;
+	}
+	36% {
+		transform: translate3d(31rem, -24rem, 0) scale(.95) rotate(-10deg);
+		opacity: .50;
+	}
+	54% {
+		transform: translate3d(49rem, -8rem, 0) scale(1.10) rotate(-18deg);
+		opacity: .61;
+	}
+	72% {
+		transform: translate3d(40rem, 17rem, 0) scale(1.00) rotate(-7deg);
+		opacity: .53;
+	}
+	88% {
+		transform: translate3d(17rem, 36rem, 0) scale(1.07) rotate(5deg);
+		opacity: .58;
+	}
+	100% {
+		transform: translate3d(-7rem, 24rem, 0) scale(.96) rotate(14deg);
+		opacity: .46;
+	}
+}
+
+@media (max-width: 780px) {
+	body.lsl-login::before,
+	body.lsl-login::after,
+	body.lsl-login #login::before,
+	body.lsl-login #login::after {
+		filter: blur(18px);
+	}
+
+	body.lsl-login::before {
+		width: 23rem;
+		height: 23rem;
+	}
+
+	body.lsl-login::after {
+		width: 24rem;
+		height: 24rem;
+	}
+
+	body.lsl-login #login::before {
+		width: 23rem;
+		height: 23rem;
+	}
+
+	body.lsl-login #login::after {
+		width: 20rem;
+		height: 20rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.lsl-login::before,
+	body.lsl-login::after,
+	body.lsl-login #login::before,
+	body.lsl-login #login::after {
+		animation: none;
+	}
+}
+
+body.lsl-login #login {
+	position: relative;
+	z-index: 1;
+	width: min(430px, calc(100% - 32px));
+	margin: 0 auto;
+	padding: 7vh 0 32px;
+}
+
+body.lsl-login h1.wp-login-logo {
+	margin: 0 0 24px;
+	text-align: center;
+}
+
+body.lsl-login h1.wp-login-logo a {
+	width: 88px;
+	height: 88px;
+	margin: 0 auto;
+	background-color: rgba(250, 251, 254, .92);
+	background-image: var(--lsl-login-logo);
+	background-size: 62%;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 1px solid rgba(250, 251, 254, .36);
+	border-radius: 24px;
+	box-shadow: 0 22px 55px rgba(0, 0, 0, .22), inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+body.lsl-login #login_error,
+body.lsl-login .notice,
+body.lsl-login .message,
+body.lsl-login .admin-email-confirm-form {
+	margin-bottom: 16px;
+	border: 1px solid rgba(250,251,254,.16);
+	border-radius: 16px;
+	background: rgba(250,251,254,.08);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	color: rgba(250,251,254,.94);
+	box-shadow: 0 12px 35px rgba(0,0,0,.12);
+}
+
+body.lsl-login form {
+	margin-top: 0;
+	padding: 30px;
+	border: 1px solid rgba(250,251,254,.17);
+	border-radius: 26px;
+	background: rgba(250,251,254,.09);
+	backdrop-filter: blur(22px);
+	-webkit-backdrop-filter: blur(22px);
+	box-shadow: 0 30px 80px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+body.lsl-login form p {
+	color: rgba(250,251,254,.78);
+}
+
+body.lsl-login form label,
+body.lsl-login .forgetmenot label {
+	color: rgba(250,251,254,.90);
+	font-size: 14px;
+	font-weight: 500;
+}
+
+body.lsl-login form .input,
+body.lsl-login form input[type="text"],
+body.lsl-login form input[type="email"],
+body.lsl-login form input[type="password"] {
+	box-sizing: border-box;
+	min-height: 52px;
+	margin-top: 7px;
+	padding-left: 12px;
+	border: 1px solid rgba(250,251,254,.18);
+	border-radius: 14px;
+	background: rgba(10,28,54,.52);
+	color: var(--lsl-white);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+	font-size: 16px;
+}
+
+body.lsl-login form .input::placeholder,
+body.lsl-login form input::placeholder {
+	color: rgba(250,251,254,.44);
+}
+
+body.lsl-login form .input:focus,
+body.lsl-login form input[type="text"]:focus,
+body.lsl-login form input[type="email"]:focus,
+body.lsl-login form input[type="password"]:focus {
+	border-color: rgba(72,208,236,.78);
+	box-shadow: 0 0 0 3px rgba(72,208,236,.13), 0 8px 24px rgba(72,208,236,.08);
+	outline: none;
+}
+
+body.lsl-login .button.button-primary,
+body.lsl-login input[type="submit"].button-primary {
+	width: 100%;
+	min-height: 52px;
+	border: 1px solid rgba(255,255,255,.14);
+	border-radius: 14px;
+	background: linear-gradient(135deg, #175fd6 0%, #1e6be8 100%);
+	color: #fff;
+	box-shadow: 0 14px 30px rgba(23,95,214,.28), inset 0 1px 0 rgba(255,255,255,.18);
+	font-size: 15px;
+	font-weight: 700;
+	transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+body.lsl-login .button.button-primary:hover,
+body.lsl-login input[type="submit"].button-primary:hover {
+	transform: translateY(-1px);
+	filter: brightness(1.04);
+	box-shadow: 0 18px 36px rgba(23,95,214,.34), inset 0 1px 0 rgba(255,255,255,.20);
+}
+
+body.lsl-login .button.button-primary:focus,
+body.lsl-login input[type="submit"].button-primary:focus {
+	box-shadow: 0 0 0 3px rgba(72,208,236,.18), 0 18px 36px rgba(23,95,214,.30);
+}
+
+body.lsl-login .wp-pwd {
+	position: relative;
+}
+
+body.lsl-login .wp-pwd .input {
+	padding-top: 0;
+	padding-right: 14px;
+	padding-bottom: 0;
+	padding-left: 12px;
+}
+
+body.lsl-login .wp-pwd .button.wp-hide-pw {
+	position: absolute;
+	left: 0;
+	top: calc(50% - 5px);
+	transform: translateY(-50%);
+	width: 42px;
+	height: 42px;
+	min-height: 42px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0;
+	border-radius: 10px;
+	background: transparent;
+	box-shadow: none;
+	line-height: 1;
+}
+
+body.lsl-login .wp-pwd .button.wp-hide-pw:focus {
+	box-shadow: 0 0 0 3px rgba(72,208,236,.13);
+	outline: none;
+}
+
+body.lsl-login .wp-pwd .button.wp-hide-pw .dashicons {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 20px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+body.lsl-login #nav,
+body.lsl-login #backtoblog,
+body.lsl-login .privacy-policy-page-link,
+body.lsl-login .language-switcher {
+	text-align: center;
+}
+
+body.lsl-login #nav a,
+body.lsl-login #backtoblog a,
+body.lsl-login .privacy-policy-page-link a {
+	color: rgba(250,251,254,.82);
+	text-decoration: none;
+	transition: color .15s ease;
+}
+
+body.lsl-login #nav a:hover,
+body.lsl-login #backtoblog a:hover,
+body.lsl-login .privacy-policy-page-link a:hover {
+	color: var(--lsl-turquoise);
+}
+
+body.lsl-login .forgetmenot {
+	margin-bottom: 0;
+}
+
+body.lsl-login .forgetmenot input[type="checkbox"] {
+	accent-color: var(--lsl-turquoise);
+}
+
+body.lsl-login .language-switcher {
+	padding-top: 14px;
+}
+
+body.lsl-login .language-switcher label {
+	color: rgba(250,251,254,.66);
+}
+
+body.lsl-login .language-switcher select {
+	border: 1px solid rgba(250,251,254,.14);
+	border-radius: 12px;
+	background: rgba(10,28,54,.55);
+	color: var(--lsl-white);
+}
+
+body.lsl-login .privacy-policy-page-link {
+	margin-top: 16px;
+}
+
+body.lsl-login .dashicons,
+body.lsl-login .dashicons-before::before {
+	color: var(--lsl-turquoise);
+}
+
+@media (max-width: 780px) {
+	body.lsl-login #login {
+		width: min(100% - 24px, 430px);
+		padding-top: 28px;
+	}
+
+	body.lsl-login form {
+		padding: 22px 18px;
+		border-radius: 22px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.lsl-login .button.button-primary,
+	body.lsl-login input[type="submit"].button-primary,
+	body.lsl-login #nav a,
+	body.lsl-login #backtoblog a,
+	body.lsl-login .privacy-policy-page-link a {
+		transition: none;
+	}
+}

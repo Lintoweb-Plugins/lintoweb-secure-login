@@ -15,9 +15,12 @@ class LSL_Compatibility {
 	/**
 	 * Initialize compatibility functionality.
 	 *
+	 * No custom WooCommerce authentication hooks are registered intentionally.
+	 * WooCommerce continues to use WordPress authentication, sessions and logout.
+	 *
 	 * @return void
 	 */
 	public function init() {
-		// Compatibility implementation will be added in the next steps.
+		// Native WordPress authentication is the compatibility layer.
 	}
 }

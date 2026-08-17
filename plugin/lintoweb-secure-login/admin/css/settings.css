@@ -1,0 +1,141 @@
+.lsl-settings-wrap {
+	max-width: 1080px;
+	margin-top: 28px;
+	color: #323336;
+}
+
+.lsl-settings-wrap h1 {
+	margin-bottom: 8px;
+	color: #0A1C36;
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: -.02em;
+}
+
+.lsl-settings-shell {
+	position: relative;
+	overflow: hidden;
+	margin-top: 22px;
+	padding: 34px;
+	border: 1px solid rgba(10,28,54,.08);
+	border-radius: 28px;
+	background:
+		radial-gradient(circle at 90% 0%, rgba(72,208,236,.10), transparent 28%),
+		linear-gradient(145deg, rgba(250,251,254,.96), rgba(244,248,252,.90));
+	box-shadow: 0 24px 70px rgba(10,28,54,.09), inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.lsl-settings-shell::after {
+	content: "";
+	position: absolute;
+	inset: auto -90px -120px auto;
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	background: rgba(23,95,214,.07);
+	filter: blur(46px);
+	pointer-events: none;
+}
+
+.lsl-settings-card {
+	position: relative;
+	z-index: 1;
+	margin-top: 18px;
+	padding: 28px;
+	border: 1px solid rgba(10,28,54,.08);
+	border-radius: 22px;
+	background: rgba(255,255,255,.70);
+	box-shadow: 0 18px 45px rgba(10,28,54,.06), inset 0 1px 0 rgba(255,255,255,.85);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+}
+
+.lsl-settings-intro {
+	margin-bottom: 24px;
+	color: #5c6470;
+}
+
+.lsl-settings-intro p {
+	margin: 0 0 10px;
+}
+
+.lsl-settings-current-url code,
+.lsl-settings-current-url a {
+	word-break: break-all;
+}
+
+.lsl-settings-current-url a {
+	color: #175FD6;
+}
+
+.lsl-settings-card .form-table {
+	margin-top: 10px;
+}
+
+.lsl-settings-card .form-table th {
+	width: 250px;
+	padding: 22px 12px 22px 0;
+	color: #0A1C36;
+	font-weight: 700;
+}
+
+.lsl-settings-card .form-table td {
+	padding: 16px 0;
+}
+
+.lsl-settings-card input[type="text"] {
+	min-height: 46px;
+	border: 1px solid #d7dee7;
+	border-radius: 12px;
+	box-shadow: none;
+}
+
+.lsl-settings-card input[type="text"]:focus {
+	border-color: #48D0EC;
+	box-shadow: 0 0 0 3px rgba(72,208,236,.12);
+}
+
+.lsl-settings-card input[type="checkbox"] {
+	accent-color: #175FD6;
+}
+
+.lsl-settings-card .description {
+	color: #6b7280;
+}
+
+.lsl-settings-card .submit .button-primary {
+	min-height: 46px;
+	padding: 0 20px;
+	border: 1px solid rgba(255,255,255,.24);
+	border-radius: 12px;
+	background: linear-gradient(135deg, #175FD6, #2c72e4);
+	box-shadow: 0 12px 24px rgba(23,95,214,.20);
+	font-weight: 700;
+}
+
+.lsl-settings-note {
+	position: relative;
+	z-index: 1;
+	margin-top: 18px;
+	padding: 17px 20px;
+	border: 1px solid rgba(72,208,236,.18);
+	border-radius: 16px;
+	background: rgba(72,208,236,.07);
+	color: #323336;
+}
+
+@media (max-width: 782px) {
+	.lsl-settings-wrap {
+		margin-right: 12px;
+		margin-left: 12px;
+	}
+
+	.lsl-settings-shell {
+		padding: 20px;
+		border-radius: 22px;
+	}
+
+	.lsl-settings-card {
+		padding: 20px;
+	}
+}
