@@ -51,10 +51,20 @@ body.lsl-login {
 }
 
 /*
- * Lintoweb ambient orb background.
- * Motion is handled by the Login-only JS controller so each orb can softly
- * steer away from the viewport edges while keeping its full visual bounds visible.
+ * Lintoweb interactive particle network background.
+ * Canvas rendering is isolated to the login screen and kept behind the form.
  */
+body.lsl-login {
+	--lsl-network-cyan: #48D0EC;
+	--lsl-network-blue: #175FD6;
+	--lsl-network-pink: #FD7C83;
+	--lsl-network-gold: #EC9828;
+	background:
+		radial-gradient(900px 680px at 12% 16%, rgba(72,208,236,.055), transparent 66%),
+		radial-gradient(760px 620px at 88% 84%, rgba(23,95,214,.060), transparent 68%),
+		linear-gradient(180deg, #071426 0%, #061323 52%, #071426 100%);
+}
+
 body.lsl-login::before,
 body.lsl-login::after,
 body.lsl-login #login::before,
@@ -62,120 +72,112 @@ body.lsl-login #login::after {
 	content: none;
 }
 
-body.lsl-login .lsl-login-orbs {
+body.lsl-login .lsl-login-network {
 	position: fixed;
 	inset: 0;
 	z-index: 0;
 	pointer-events: none;
 	overflow: hidden;
+	isolation: isolate;
 	contain: layout paint size;
 }
 
-body.lsl-login .lsl-orb {
+body.lsl-login .lsl-network-canvas {
+	position: absolute;
+	inset: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: .92;
+	will-change: transform;
+}
+
+body.lsl-login .lsl-network-glow {
+	position: absolute;
+	width: 38vw;
+	height: 38vw;
+	min-width: 280px;
+	min-height: 280px;
+	max-width: 620px;
+	max-height: 620px;
+	border-radius: 50%;
+	pointer-events: none;
+	filter: blur(64px);
+	opacity: .16;
+	transform: translate3d(var(--lsl-parallax-x, 0px), var(--lsl-parallax-y, 0px), 0);
+	transition: transform .55s cubic-bezier(.22,.61,.36,1), opacity .6s ease;
+}
+
+body.lsl-login .lsl-network-glow--one {
+	left: -9vw;
+	top: -10vw;
+	background: radial-gradient(circle, rgba(72,208,236,.34), transparent 70%);
+}
+
+body.lsl-login .lsl-network-glow--two {
+	right: -10vw;
+	bottom: -12vw;
+	background: radial-gradient(circle, rgba(23,95,214,.30), transparent 70%);
+}
+
+body.lsl-login .lsl-network-ripple {
 	position: absolute;
 	left: 0;
 	top: 0;
-	display: block;
-	width: 24rem;
-	height: 24rem;
+	width: 18px;
+	height: 18px;
+	border: 1px solid rgba(72,208,236,.18);
 	border-radius: 50%;
+	opacity: 0;
+	transform: translate3d(-50%, -50%, 0) scale(.15);
 	pointer-events: none;
 	will-change: transform, opacity;
-	transform-origin: 50% 50%;
-	mix-blend-mode: screen;
-	backface-visibility: hidden;
 }
 
-body.lsl-login .lsl-orb::after {
-	content: "";
-	position: absolute;
-	inset: -7%;
-	border-radius: inherit;
-	background: radial-gradient(circle, rgba(250,251,254,.035), transparent 66%);
-	filter: blur(18px);
-	pointer-events: none;
+body.lsl-login .lsl-network-ripple.is-active {
+	animation: lsl-network-ripple 1.05s cubic-bezier(.16,1,.3,1);
 }
 
-body.lsl-login .lsl-orb-1 {
-	width: 31rem;
-	height: 31rem;
-	background:
-		radial-gradient(circle at 42% 37%, rgba(72,208,236,.31) 0 4%, rgba(72,208,236,.19) 18%, rgba(72,208,236,.075) 42%, rgba(72,208,236,.025) 59%, transparent 78%);
-	filter: blur(25px);
+@keyframes lsl-network-ripple {
+	0% {
+		opacity: .30;
+		transform: translate3d(-50%, -50%, 0) scale(.15);
+	}
+	100% {
+		opacity: 0;
+		transform: translate3d(-50%, -50%, 0) scale(14);
+	}
 }
 
-body.lsl-login .lsl-orb-2 {
-	width: 27rem;
-	height: 27rem;
-	background:
-		radial-gradient(circle at 45% 41%, rgba(23,95,214,.28) 0 5%, rgba(23,95,214,.17) 20%, rgba(23,95,214,.065) 44%, rgba(23,95,214,.022) 60%, transparent 80%);
-	filter: blur(23px);
-}
-
-body.lsl-login .lsl-orb-3 {
-	width: 21rem;
-	height: 21rem;
-	background:
-		radial-gradient(circle at 48% 43%, rgba(253,124,131,.24) 0 5%, rgba(253,124,131,.14) 19%, rgba(253,124,131,.055) 44%, rgba(253,124,131,.018) 60%, transparent 80%);
-	filter: blur(22px);
-}
-
-body.lsl-login .lsl-orb-4 {
-	width: 17rem;
-	height: 17rem;
-	background:
-		radial-gradient(circle at 48% 44%, rgba(236,152,40,.20) 0 5%, rgba(236,152,40,.11) 20%, rgba(236,152,40,.045) 45%, rgba(236,152,40,.014) 62%, transparent 82%);
-	filter: blur(19px);
-}
-
-body.lsl-login .lsl-orb-5 {
-	width: 19rem;
-	height: 19rem;
-	background:
-		radial-gradient(circle at 44% 42%, rgba(72,208,236,.12) 0 5%, rgba(23,95,214,.085) 22%, rgba(72,208,236,.04) 45%, rgba(72,208,236,.012) 62%, transparent 82%);
-	filter: blur(27px);
-	mix-blend-mode: screen;
+body.lsl-login #login {
+	z-index: 2;
 }
 
 @media (max-width: 780px) {
-	body.lsl-login .lsl-orb-1 {
-		width: 23rem;
-		height: 23rem;
-		filter: blur(20px);
+	body.lsl-login .lsl-network-canvas {
+		opacity: .86;
 	}
 
-	body.lsl-login .lsl-orb-2 {
-		width: 21rem;
-		height: 21rem;
-		filter: blur(19px);
-	}
-
-	body.lsl-login .lsl-orb-3 {
-		width: 16rem;
-		height: 16rem;
-		filter: blur(18px);
-	}
-
-	body.lsl-login .lsl-orb-4 {
-		width: 13rem;
-		height: 13rem;
-		filter: blur(16px);
-	}
-
-	body.lsl-login .lsl-orb-5 {
-		width: 15rem;
-		height: 15rem;
-		filter: blur(21px);
+	body.lsl-login .lsl-network-glow {
+		min-width: 220px;
+		min-height: 220px;
+		filter: blur(52px);
+		opacity: .13;
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	body.lsl-login .lsl-login-orbs {
-		contain: strict;
+	body.lsl-login .lsl-network-canvas {
+		will-change: auto;
 	}
 
-	body.lsl-login .lsl-orb {
-		will-change: auto;
+	body.lsl-login .lsl-network-glow {
+		transition: none;
+		transform: none;
+	}
+
+	body.lsl-login .lsl-network-ripple {
+		display: none;
 	}
 }
 
@@ -186,6 +188,47 @@ body.lsl-login #login {
 	margin: 0 auto;
 	padding: 7vh 0 32px;
 }
+
+body.lsl-login .lsl-brand-credit {
+	position: fixed;
+	left: 50%;
+	bottom: 20px;
+	z-index: 3;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	font-family: "Vazirmatn", Tahoma, "Segoe UI", Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: .02em;
+}
+
+body.lsl-login .lsl-brand-credit a {
+	color: rgba(250,251,254,.62);
+	text-decoration: none;
+	transition: color .2s ease, opacity .2s ease, text-shadow .2s ease;
+}
+
+body.lsl-login .lsl-brand-credit a:hover,
+body.lsl-login .lsl-brand-credit a:focus-visible {
+	color: #48D0EC;
+	text-decoration: none;
+	text-shadow: 0 0 14px rgba(72,208,236,.25);
+	outline: none;
+}
+
+@media (max-width: 480px) {
+	body.lsl-login .lsl-brand-credit {
+		bottom: 14px;
+		font-size: 11px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.lsl-login .lsl-brand-credit a {
+		transition: none;
+	}
+}
+
 
 body.lsl-login h1.wp-login-logo {
 	margin: 0 0 24px;

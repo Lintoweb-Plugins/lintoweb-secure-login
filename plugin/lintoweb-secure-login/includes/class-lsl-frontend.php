@@ -26,7 +26,8 @@ class LSL_Frontend {
 		add_filter( 'login_headerurl', array( $this, 'login_header_url' ) );
 		add_filter( 'login_headertext', array( $this, 'login_header_text' ) );
 		add_action( 'login_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		add_action( 'login_footer', array( $this, 'render_orb_background' ), 5 );
+		add_action( 'login_footer', array( $this, 'render_particle_background' ), 5 );
+		add_action( 'login_footer', array( $this, 'render_brand_credit' ), 20 );
 	}
 
 	/**
@@ -108,18 +109,30 @@ class LSL_Frontend {
 	}
 
 	/**
-	 * Render the lightweight ambient orb layer behind the login form.
+	 * Render the interactive particle network layer behind the login form.
 	 *
 	 * @return void
 	 */
-	public function render_orb_background() {
+	public function render_particle_background() {
 		?>
-		<div class="lsl-login-orbs" aria-hidden="true">
-			<span class="lsl-orb lsl-orb-1"></span>
-			<span class="lsl-orb lsl-orb-2"></span>
-			<span class="lsl-orb lsl-orb-3"></span>
-			<span class="lsl-orb lsl-orb-4"></span>
-			<span class="lsl-orb lsl-orb-5"></span>
+		<div class="lsl-login-network" aria-hidden="true">
+			<canvas class="lsl-network-canvas"></canvas>
+			<span class="lsl-network-glow lsl-network-glow--one"></span>
+			<span class="lsl-network-glow lsl-network-glow--two"></span>
+			<span class="lsl-network-ripple"></span>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Render the Lintoweb brand credit at the bottom of the login page.
+	 *
+	 * @return void
+	 */
+	public function render_brand_credit() {
+		?>
+		<div class="lsl-brand-credit">
+			<a href="<?php echo esc_url( 'https://lintoweb.com/' ); ?>">designed by lintoweb</a>
 		</div>
 		<?php
 	}

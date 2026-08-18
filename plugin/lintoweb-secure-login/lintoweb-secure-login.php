@@ -3,7 +3,9 @@
  * Plugin Name:       Lintoweb Secure Login
  * Plugin URI:        https://lintoweb.com/
  * Description:       Customizes the WordPress login URL without modifying WordPress core files.
- * Version:           1.0.8
+ * Version:           1.0.9
+ * Requires at least: 6.4
+ * Requires PHP:      8.3
  * Author:            Lintoweb
  * Author URI:        https://lintoweb.com/
  * Text Domain:       lintoweb-secure-login
@@ -18,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Plugin constants.
  */
-define( 'LSL_VERSION', '1.0.8' );
+define( 'LSL_VERSION', '1.0.9' );
 define( 'LSL_FILE', __FILE__ );
 define( 'LSL_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LSL_URL', plugin_dir_url( __FILE__ ) );
